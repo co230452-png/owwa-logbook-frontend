@@ -146,7 +146,6 @@ const LoginPage: React.FC = () => {
             <p className="font-semibold mb-2 text-blue-200">Demo Credentials (after seeding):</p>
             <div className="space-y-1 text-blue-100">
               <p><span className="font-medium">Admin:</span> admin@owwa9.gov.ph / Admin@1234</p>
-              <p><span className="font-medium">User:</span> maria.santos@email.com / User@1234</p>
             </div>
           </div>
         </div>
