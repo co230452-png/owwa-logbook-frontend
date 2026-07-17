@@ -18,7 +18,7 @@ const OWWALogo: React.FC<OWWALogoProps> = ({ size = 'md', variant = 'full', clas
       {/* OWWA Shield Icon */}
       <div className={`${sizes[size].icon} relative flex-shrink-0`}>
         <img
-        src="/owwa-logo.png"
+        src="/owwa-logo.jpg"
         alt="OWWA Logo"
         className="w-full h-full object-contain"
         />
