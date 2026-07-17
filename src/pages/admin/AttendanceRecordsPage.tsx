@@ -190,15 +190,17 @@ const AttendanceRecordsPage: React.FC = () => {
 
       {/* Filters */}
       <div className="card mb-6">
-        <div className="flex flex-wrap gap-3 items-end">
+        <div className="grid grid-cols-2 gap-3 mb-3">
           <div>
             <label className="form-label text-xs">From Date</label>
-            <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="form-input text-sm py-2" />
+            <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="form-input text-sm py-2 w-full" />
           </div>
           <div>
             <label className="form-label text-xs">To Date</label>
-            <input type="date" value={endDate}   onChange={e => setEndDate(e.target.value)}   className="form-input text-sm py-2" />
+            <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className="form-input text-sm py-2 w-full" />
           </div>
+        </div>
+        <div className="flex gap-2 flex-wrap">
           <button onClick={handleSearch} className="btn-primary flex items-center gap-2 py-2">
             <Search className="w-4 h-4" /> Filter
           </button>
@@ -232,18 +234,18 @@ const AttendanceRecordsPage: React.FC = () => {
         ) : (
           <>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table style={{ minWidth: '700px' }} className="w-full text-sm">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
                     <th className="table-header">#</th>
                     <th className="table-header">Name</th>
-                    <th className="table-header hidden sm:table-cell">OWWA ID</th>
+                    <th className="table-header">OWWA ID</th>
                     <th className="table-header">Date</th>
-                    <th className="table-header bg-blue-50 text-blue-700">🌅 AM In</th>
-                    <th className="table-header bg-blue-50 text-blue-700">🌅 AM Out</th>
-                    <th className="table-header bg-orange-50 text-orange-700">🌇 PM In</th>
-                    <th className="table-header bg-orange-50 text-orange-700">🌇 PM Out</th>
-                    <th className="table-header bg-green-50 text-green-700">⏱ Total</th>
+                    <th className="table-header bg-blue-50 text-blue-700">AM In</th>
+                    <th className="table-header bg-blue-50 text-blue-700">AM Out</th>
+                    <th className="table-header bg-orange-50 text-orange-700">PM In</th>
+                    <th className="table-header bg-orange-50 text-orange-700">PM Out</th>
+                    <th className="table-header bg-green-50 text-green-700">Total</th>
                     <th className="table-header text-center">Actions</th>
                   </tr>
                 </thead>
@@ -251,17 +253,18 @@ const AttendanceRecordsPage: React.FC = () => {
                   {records.map((r, idx) => (
                     <tr key={r._id} className="hover:bg-gray-50 transition-colors">
                       <td className="table-cell text-gray-400 text-xs">{(page-1)*25+idx+1}</td>
-                      <td className="table-cell">
+                      <td className="table-cell whitespace-nowrap">
                         <button
                           onClick={() => r.userId?._id && setDetailUserId(r.userId._id)}
-                          className="font-medium text-gray-800 hover:text-blue-700 text-left"
+                          className="font-medium text-gray-800 hover:text-blue-700 text-left whitespace-nowrap"
                         >
                           {r.userId?.firstName} {r.userId?.lastName}
                         </button>
-                        <div className="text-xs text-gray-400 sm:hidden">{r.userId?.owwaId || ''}</div>
                       </td>
-                      <td className="table-cell hidden sm:table-cell text-gray-500">{r.userId?.owwaId || '—'}</td>
-                      <td className="table-cell font-medium">{r.date}</td>
+                      <td className="table-cell text-gray-500">{r.userId?.owwaId || '—'}</td>
+                      <td className="table-cell font-medium whitespace-nowrap">
+                        {format(new Date(r.date + 'T00:00:00'), 'MMM d, yyyy')}
+                      </td>
                       <td className="table-cell bg-blue-50/40">
                         {r.morningIn    ? <span className="badge-approved">{fmt(r.morningIn)}</span>    : <span className="text-gray-300 text-xs">—</span>}
                       </td>

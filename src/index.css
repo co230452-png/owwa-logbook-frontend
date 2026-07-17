@@ -122,6 +122,11 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
+  /* Prevent horizontal page overflow on mobile */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 transparent;
