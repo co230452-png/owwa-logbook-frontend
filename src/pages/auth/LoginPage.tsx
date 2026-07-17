@@ -44,18 +44,16 @@ const LoginPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 flex flex-col">
       {/* Top Banner */}
-      <div className="bg-red-700 text-white text-center text-xs py-1.5 font-medium tracking-wide">
-        Republic of the Philippines — Overseas Workers Welfare Administration
-      </div>
+ 
 
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-md animate-slide-up">
           {/* Card */}
           <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-900 to-blue-700 px-8 py-8 text-center">
+            <div className="bg-gradient-to-r from-red-900 to-blue-6 00 px-8 py-8 text-center">
               <div className="flex justify-center mb-4">
-                <OWWALogo size="lg" className="text-white" />
+                <img src="owwa-logo.jpg" className='w-16 h-16 rounded-full'></img>
               </div>
               <h1 className="text-white text-xl font-bold">Logbook System</h1>
               <p className="text-blue-200 text-sm mt-1">Region IX — Zamboanga Peninsula</p>
@@ -141,13 +139,7 @@ const LoginPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Demo Credentials */}
-          <div className="mt-4 bg-white/10 backdrop-blur rounded-xl p-4 text-white text-xs">
-            <p className="font-semibold mb-2 text-blue-200">Demo Credentials (after seeding):</p>
-            <div className="space-y-1 text-blue-100">
-              <p><span className="font-medium">Admin:</span> admin@owwa9.gov.ph / Admin@1234</p>
-            </div>
-          </div>
+
         </div>
       </div>
 

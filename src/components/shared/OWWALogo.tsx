@@ -17,27 +17,11 @@ const OWWALogo: React.FC<OWWALogoProps> = ({ size = 'md', variant = 'full', clas
     <div className={`flex items-center gap-3 ${className}`}>
       {/* OWWA Shield Icon */}
       <div className={`${sizes[size].icon} relative flex-shrink-0`}>
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path
-            d="M20 2L4 8v12c0 9 7.2 16.4 16 18 8.8-1.6 16-9 16-18V8L20 2z"
-            fill="#1e3a8a"
-          />
-          <path
-            d="M20 5L7 10.5v9.5c0 7.2 5.8 13.2 13 14.5 7.2-1.3 13-7.3 13-14.5v-9.5L20 5z"
-            fill="#2563eb"
-          />
-          <text
-            x="20"
-            y="24"
-            textAnchor="middle"
-            fill="white"
-            fontSize="11"
-            fontWeight="bold"
-            fontFamily="Inter, sans-serif"
-          >
-            OWWA
-          </text>
-        </svg>
+        <img
+        src="/owwa-logo.png"
+        alt="OWWA Logo"
+        className="w-full h-full object-contain"
+        />
       </div>
 
       {variant === 'full' && (
