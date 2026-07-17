@@ -42,7 +42,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-red-900 via-blue-800 to-blue-700 flex flex-col">
       {/* Top Banner */}
  
 
@@ -51,7 +51,7 @@ const LoginPage: React.FC = () => {
           {/* Card */}
           <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-red-900 to-blue-6 00 px-8 py-8 text-center">
+            <div className="bg-gradient-to-r from-blue-900 to-blue-6 00 px-8 py-8 text-center">
               <div className="flex justify-center mb-4">
                 <img src="owwa-logo.jpg" className='w-16 h-16 rounded-full'></img>
               </div>
