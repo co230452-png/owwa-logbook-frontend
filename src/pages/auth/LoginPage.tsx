@@ -53,7 +53,7 @@ const LoginPage: React.FC = () => {
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-900 to-blue-600 px-8 py-8 text-center">
               <div className="flex justify-center mb-4">
-                <img src="owwa-logo.jpg" className='w-16 h-16 rounded-full p-6'></img>
+                <img src="owwa-logo.jpg" className='w-16 h-16 rounded-full'></img>
               </div>
               <h1 className="text-white text-xl font-bold">Logbook System</h1>
               <p className="text-blue-200 text-sm mt-1">Region IX — Zamboanga Peninsula</p>
