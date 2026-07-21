@@ -346,10 +346,21 @@ const UserDetailModal: React.FC<Props> = ({ userId, onClose }) => {
         </div>
 
         {/* ── Footer ──────────────────────────────────────── */}
-        <div className="px-6 py-4 border-t border-gray-100 flex-shrink-0">
-          <button onClick={onClose} className="btn-secondary w-full text-sm py-2.5">
+        <div className="px-6 py-4 border-t border-gray-100 flex-shrink-0 flex gap-2">
+          <button onClick={onClose} className="flex-1 btn-secondary text-sm py-2.5">
             Close
           </button>
+          {user && user.role !== 'admin' && (
+            <button
+              onClick={handleDefaultPassword}
+              disabled={resetting}
+              className="flex-1 btn-primary text-sm py-2.5 flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {resetting
+                ? <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Resetting...</>
+                : '🔑 Set Default Password'}
+            </button>
+          )}
         </div>
       </div>
     </div>
