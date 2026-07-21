@@ -45,6 +45,7 @@ const AttendanceRecordsPage: React.FC = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate]     = useState('');
   const [exporting, setExporting] = useState(false);
+  const [nameSearch, setNameSearch] = useState('');
   const [editModal, setEditModal]   = useState<EditModal | null>(null);
   const [saving, setSaving]         = useState(false);
   const [detailUserId, setDetailUserId] = useState<string | null>(null);
@@ -55,8 +56,9 @@ const AttendanceRecordsPage: React.FC = () => {
     setLoading(true);
     try {
       const params: any = { page, limit: 25 };
-      if (startDate) params.startDate = startDate;
-      if (endDate)   params.endDate   = endDate;
+      if (startDate)    params.startDate = startDate;
+      if (endDate)      params.endDate   = endDate;
+      if (nameSearch)   params.search    = nameSearch;
       const { data } = await attendanceAPI.getAll(params);
       setRecords(data.records);
       setTotal(data.total);
@@ -143,8 +145,9 @@ const AttendanceRecordsPage: React.FC = () => {
     setExporting(true);
     try {
       const params: any = { page: 1, limit: 10000 };
-      if (startDate) params.startDate = startDate;
-      if (endDate)   params.endDate   = endDate;
+      if (startDate)  params.startDate = startDate;
+      if (endDate)    params.endDate   = endDate;
+      if (nameSearch) params.search    = nameSearch;
       const { data } = await attendanceAPI.getAll(params);
 
       const headers = [
@@ -200,12 +203,26 @@ const AttendanceRecordsPage: React.FC = () => {
             <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className="form-input text-sm py-2 w-full" />
           </div>
         </div>
+        <div className="mb-3">
+          <label className="form-label text-xs">Search by Name</label>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <input
+              type="text"
+              value={nameSearch}
+              onChange={e => setNameSearch(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleSearch()}
+              placeholder="Search by name..."
+              className="form-input pl-10 text-sm py-2 w-full"
+            />
+          </div>
+        </div>
         <div className="flex gap-2 flex-wrap">
           <button onClick={handleSearch} className="btn-primary flex items-center gap-2 py-2">
             <Search className="w-4 h-4" /> Filter
           </button>
-          {(startDate || endDate) && (
-            <button onClick={() => { setStartDate(''); setEndDate(''); setTimeout(loadRecords, 50); }}
+          {(startDate || endDate || nameSearch) && (
+            <button onClick={() => { setStartDate(''); setEndDate(''); setNameSearch(''); setTimeout(loadRecords, 50); }}
               className="btn-secondary text-sm py-2 px-3">Clear</button>
           )}
           <button onClick={handleExportCSV} disabled={exporting || records.length === 0}

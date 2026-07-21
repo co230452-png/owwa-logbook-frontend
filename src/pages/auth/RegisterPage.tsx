@@ -77,10 +77,8 @@ const RegisterPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 flex flex-col">
-      <div className="bg-red-700 text-white text-center text-xs py-1.5 font-medium tracking-wide">
-        Republic of the Philippines — Overseas Workers Welfare Administration
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-red-900 via-blue-800 to-blue-700 flex flex-col">
+     
 
       <div className="flex-1 flex items-center justify-center p-4 py-8">
         <div className="w-full max-w-lg animate-slide-up">
@@ -88,7 +86,7 @@ const RegisterPage: React.FC = () => {
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-900 to-blue-700 px-8 py-6 text-center">
               <div className="flex justify-center mb-3">
-                <OWWALogo size="md" />
+                <img src="owwa-logo.jpg" className='w-16 h-16 rounded-full'></img>
               </div>
               <h1 className="text-white text-lg font-bold">Create an Account</h1>
               <p className="text-blue-200 text-sm">OWWA Region IX Logbook System</p>
@@ -114,7 +112,7 @@ const RegisterPage: React.FC = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       className="form-input"
-                      placeholder="Juan"
+                      placeholder="First Name"
                       required
                     />
                   </div>
@@ -126,7 +124,7 @@ const RegisterPage: React.FC = () => {
                       value={formData.lastName}
                       onChange={handleChange}
                       className="form-input"
-                      placeholder="Dela Cruz"
+                      placeholder="Last Name"
                       required
                     />
                   </div>

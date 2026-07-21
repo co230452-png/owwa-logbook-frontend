@@ -6,6 +6,7 @@ import {
   ClipboardList,
   Users,
   UserCheck,
+  Settings,
   LogOut,
   Menu,
   X,
@@ -16,11 +17,12 @@ import { useAuth } from '../../context/AuthContext';
 import OWWALogo from '../shared/OWWALogo';
 
 const adminNavItems = [
-  { label: 'Dashboard', icon: LayoutDashboard, path: '/admin/dashboard' },
-  { label: 'QR Scanner', icon: QrCode, path: '/admin/scanner' },
-  { label: 'Attendance Records', icon: ClipboardList, path: '/admin/attendance' },
-  { label: 'User Accounts', icon: Users, path: '/admin/users' },
-  { label: 'Pending Approvals', icon: UserCheck, path: '/admin/pending' },
+  { label: 'Dashboard',          icon: LayoutDashboard, path: '/admin/dashboard' },
+  { label: 'QR Scanner',         icon: QrCode,          path: '/admin/scanner' },
+  { label: 'Attendance Records', icon: ClipboardList,   path: '/admin/attendance' },
+  { label: 'User Accounts',      icon: Users,           path: '/admin/users' },
+  { label: 'Pending Approvals',  icon: UserCheck,       path: '/admin/pending' },
+  { label: 'Settings',           icon: Settings,        path: '/admin/settings' },
 ];
 
 const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

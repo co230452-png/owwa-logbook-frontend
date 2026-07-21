@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   ClipboardList,
+  Settings,
   LogOut,
   Menu,
   X,
@@ -12,8 +13,9 @@ import { useAuth } from '../../context/AuthContext';
 import OWWALogo from '../shared/OWWALogo';
 
 const userNavItems = [
-  { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
-  { label: 'My Attendance', icon: ClipboardList, path: '/attendance' },
+  { label: 'Dashboard',    icon: LayoutDashboard, path: '/dashboard' },
+  { label: 'My Attendance', icon: ClipboardList,  path: '/attendance' },
+  { label: 'Settings',     icon: Settings,        path: '/settings' },
 ];
 
 const UserLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

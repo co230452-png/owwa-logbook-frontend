@@ -20,6 +20,7 @@ import UserManagementPage from './pages/admin/UserManagementPage';
 import PendingApprovalsPage from './pages/admin/PendingApprovalsPage';
 
 import NotFoundPage from './pages/NotFoundPage';
+import SettingsPage from './pages/shared/SettingsPage';
 
 // Root redirect based on auth state
 const RootRedirect: React.FC = () => {
@@ -77,6 +78,14 @@ const AppRoutes: React.FC = () => (
         </ProtectedRoute>
       }
     />
+    <Route
+      path="/settings"
+      element={
+        <ProtectedRoute>
+          <SettingsPage />
+        </ProtectedRoute>
+      }
+    />
 
     {/* Admin Protected Routes */}
     <Route
@@ -116,6 +125,15 @@ const AppRoutes: React.FC = () => (
       element={
         <AdminRoute>
           <PendingApprovalsPage />
+        </AdminRoute>
+      }
+    />
+
+    <Route
+      path="/admin/settings"
+      element={
+        <AdminRoute>
+          <SettingsPage />
         </AdminRoute>
       }
     />

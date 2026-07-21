@@ -4,6 +4,7 @@ import {
   CalendarDays, Clock, CheckCircle, ChevronDown, ChevronUp,
 } from 'lucide-react';
 import { usersAPI, attendanceAPI } from '../../utils/api';
+import toast from 'react-hot-toast';
 import { format } from 'date-fns';
 
 interface Props {
@@ -31,6 +32,7 @@ const UserDetailModal: React.FC<Props> = ({ userId, onClose }) => {
   const [user, setUser]             = useState<any>(null);
   const [records, setRecords]       = useState<any[]>([]);
   const [loadingUser, setLoadingUser]     = useState(true);
+  const [resetting, setResetting]         = useState(false);
   const [loadingAttend, setLoadingAttend] = useState(true);
   const [page, setPage]             = useState(1);
   const [pages, setPages]           = useState(1);
@@ -44,6 +46,19 @@ const UserDetailModal: React.FC<Props> = ({ userId, onClose }) => {
   useEffect(() => {
     loadAttendance();
   }, [userId, page]);
+
+  const handleDefaultPassword = async () => {
+    if (!confirm(`Reset password to default (Owwa91234) for ${user?.firstName} ${user?.lastName}?`)) return;
+    setResetting(true);
+    try {
+      await usersAPI.setDefaultPassword(userId);
+      toast.success('Password reset to default successfully');
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || 'Failed to reset password');
+    } finally {
+      setResetting(false);
+    }
+  };
 
   const loadUser = async () => {
     setLoadingUser(true);
