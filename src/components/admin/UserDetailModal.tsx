@@ -368,3 +368,4 @@ const UserDetailModal: React.FC<Props> = ({ userId, onClose }) => {
 };
 
 export default UserDetailModal;
+  
