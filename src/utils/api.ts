@@ -55,6 +55,7 @@ export const usersAPI = {
   setDefaultPassword: (id: string) => api.patch(`/users/${id}/default-password`),
   changePassword: (currentPassword: string, newPassword: string) =>
     api.patch('/users/change-password', { currentPassword, newPassword }),
+  updateProfile: (data: object) => api.patch('/users/update-profile', data),
 };
 
 // ─── Attendance ──────────────────────────────────────────────────────────────
