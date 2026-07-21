@@ -52,6 +52,9 @@ export const usersAPI = {
     api.patch(`/users/${id}/status`, { status }),
   delete: (id: string) => api.delete(`/users/${id}`),
   getStats: () => api.get('/users/stats'),
+  setDefaultPassword: (id: string) => api.patch(`/users/${id}/default-password`),
+  changePassword: (currentPassword: string, newPassword: string) =>
+    api.patch('/users/change-password', { currentPassword, newPassword }),
 };
 
 // ─── Attendance ──────────────────────────────────────────────────────────────
