@@ -12,6 +12,7 @@ const SettingsContent: React.FC = () => {
   // ── Profile state ────────────────────────────────────
   const [firstName, setFirstName]   = useState('');
   const [lastName, setLastName]     = useState('');
+  const [email, setEmail]           = useState('');
   const [phone, setPhone]           = useState('');
   const [address, setAddress]       = useState('');
   const [owwaId, setOwwaId]         = useState('');
@@ -35,6 +36,7 @@ const SettingsContent: React.FC = () => {
     if (user) {
       setFirstName(user.firstName || '');
       setLastName(user.lastName   || '');
+      setEmail(user.email         || '');
       setPhone(user.phone         || '');
       setAddress(user.address     || '');
       setOwwaId(user.owwaId       || '');
@@ -51,7 +53,7 @@ const SettingsContent: React.FC = () => {
     }
     setSavingProfile(true);
     try {
-      await usersAPI.updateProfile({ firstName, lastName, phone, address, owwaId });
+      await usersAPI.updateProfile({ firstName, lastName, email, phone, address, owwaId });
       await refreshUser();
       setProfileSuccess(true);
       toast.success('Profile updated successfully!');
@@ -188,10 +190,9 @@ const SettingsContent: React.FC = () => {
             )}
 
             <div>
-              <label className="form-label">Email Address</label>
-              <input type="email" value={user?.email || ''} disabled
-                className="form-input bg-gray-50 text-gray-400 cursor-not-allowed" />
-              <p className="text-xs text-gray-400 mt-1">Email cannot be changed</p>
+              <label className="form-label">Email Address <span className="text-red-500">*</span></label>
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                className="form-input" placeholder="you@email.com" required />
             </div>
 
             <button type="submit" disabled={savingProfile}
